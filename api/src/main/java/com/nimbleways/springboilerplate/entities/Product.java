@@ -5,6 +5,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Getter
@@ -18,14 +19,17 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
+    @Min(0)
     @Column(name = "lead_time")
     private Integer leadTime;
 
+    @Min(0)
     @Column(name = "available")
     private Integer available;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private ProductType type;
 
     @Column(name = "name")
     private String name;
